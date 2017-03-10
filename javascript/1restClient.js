@@ -28,7 +28,7 @@ var Rest = {
       .onAuthStateChanged(function(user) {
         if (user) {
           Ajax.page('profile', function(){
-            globalWrapper.innerHTML = this;ss
+            globalWrapper.innerHTML = this;
           });
         } else {
           Ajax.page('login', function(){
@@ -39,5 +39,16 @@ var Rest = {
   },
   getUser: function(){
     return firebase.auth().currentUser;
+  },
+  signOut: function(){
+    firebase.auth()
+      .signOut()
+      .then(function() {
+        Ajax.page('login', function(){
+          globalWrapper.innerHTML = this;
+        });
+      }).catch(function(error) {
+        console.log(error);
+    });
   }
 };

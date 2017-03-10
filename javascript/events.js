@@ -22,9 +22,9 @@ EventHandler.on({
 EventHandler.on({
   action: 'click',
   attr: 'data-login'
-}, Account.login());
+}, Account.login);
 
 EventHandler.on({
   action: 'click',
   attr: 'data-registration'
-}, Account.registration());
+}, Account.registration);

@@ -17,10 +17,18 @@ var Account = {
         });
 
     if(fieldsValidation){
-      alert('OK');
+      if(this.emailValidation(fields.email)){
+        if(this.passwordValidation(fields.password)){
+          alert('OK');
+        } else {
+          alert('Incorrect password. \n Assert a string has at least one number\nAssert a string has at least one special character\n Length: 8-30');
+        }
+      } else {
+        alert('Enter correct email!');
+      }
     }
   },
-  getRegistrationValues: function(field){
+  getRegistrationValues: function(){
     return {
       firstName: document.getElementById('REGISTRATION_fname').value,
       lastName: document.getElementById('REGISTRATION_lname').value,
@@ -43,5 +51,13 @@ var Account = {
       }
     }
     return true;
+  },
+  emailValidation: function(email){
+    var emailPattern = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailPattern.test(email);
+  },
+  passwordValidation: function(password){
+    var passwordPattern = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,30}$/;
+    return passwordPattern.test(password);
   }
 };
