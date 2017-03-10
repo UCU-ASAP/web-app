@@ -503,15 +503,28 @@ input:focus{
   padding-top: 60px;
   overflow-y: auto;
 }
+
 .global-menu--item{
+  position: relative;
   width: 100%;
   box-sizing: border-box;
-  padding: 0 25px;
-  height: 50px;
-  font: 400 1em/50px Helvetica, sans-serif;
+  padding: 0 25px 0 50px;
+  height: 60px;
+  font: 400 1.15em/60px Helvetica, sans-serif;
   color: #666666;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 0.1px solid #dddddd;
+
 }
+.global-menu--item svg{
+  position: absolute;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  top: 17px;
+  left: 17px;
+  fill: #666;
+}
+
 .global-menu--item:last-child{
   border: none;
 }
