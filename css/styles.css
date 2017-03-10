@@ -342,6 +342,7 @@ input:focus{
 
 .profile--image-container{
   position: relative;
+
   width: 100%;
   height: 150px;
 }
@@ -349,8 +350,9 @@ input:focus{
   width: 120px;
   height: 120px;
   border-radius: 50%;
+  border: 3px solid #666;
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -370,15 +372,22 @@ input:focus{
 }
 .profile--info-label{
   width: 100%;
+  text-align: center;
+    border: 2px solid red;
+    border-radius: 5px;
   font: 400 .75em Helvetica, sans-serif;
   padding-bottom: 5px;
   color: #999999;
 }
 .profile--info-value{
   width: 100%;
-  font: 400 .95em Helvetica, sans-serif;
+  text-align: center;
+  padding-top: 20px;
+  font: 400 1.1em Helvetica, sans-serif;
   color: #555555;
 }
+
+
 
 /*Friends page*/
 
