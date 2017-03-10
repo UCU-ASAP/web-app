@@ -56,15 +56,3 @@ function setMarkerOnMap(location, title, key){
   };
   return markerCoordinates[key];
 }
-
-function sendUserPosition(coords){
-  Ajax.post('/api/v1.0/userLocation/' + CURRENT_USER_ID, coords, function(){
-    var data = JSON.parse(this);
-
-    if(data.success){
-      return;
-    } else {
-      alert(data.message);
-    }
-  });
-}
