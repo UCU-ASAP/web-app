@@ -193,10 +193,11 @@ input:focus{
   padding: 0;
   background: transparent;
 }
-.top-panel--button img{
+.top-panel--button svg{
   width: 22px;
   height: 22px;
-  margin: 10px;
+  padding: 10px;
+  fill: #fff;
 }
 .top-panel--back{
   left: 0;
