@@ -1,6 +1,6 @@
 var Account = {
   login: function(){
-    var fields = this.getLoginValues();
+    var fields = Account.getLoginValues();
 
     if(fields.email.trim() !== '' && fields.password.trim() !== ''){
       Rest.authenticate(fields);
@@ -9,16 +9,16 @@ var Account = {
     }
   },
   registration: function(){
-    var fields = this.getRegistrationValues(),
+    var fields = Account.getRegistrationValues(),
         fieldNames = ['firstName', 'lastName', 'email', 'password', 'repeatPassword'],
-        fieldsValidation = this.validateTextFields({
+        fieldsValidation = Account.validateTextFields({
           fields: fields,
           fieldNames: fieldNames
         });
 
     if(fieldsValidation){
-      if(this.emailValidation(fields.email)){
-        if(this.passwordValidation(fields.password)){
+      if(Account.emailValidation(fields.email)){
+        if(Account.passwordValidation(fields.password)){
           alert('OK');
         } else {
           alert('Incorrect password. \n Assert a string has at least one number\nAssert a string has at least one special character\n Length: 8-30');

@@ -11,7 +11,7 @@ var Rest = {
   authenticate: function(fields){
     firebase.auth()
       .signInWithEmailAndPassword(fields.email, fields.password)
-      .catch(this.authenticationErrorHandler());
+      .catch(Rest.authenticationErrorHandler());
   },
   authenticationErrorHandler: function(error){
     switch(error.code){
