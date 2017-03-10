@@ -22,24 +22,9 @@ EventHandler.on({
 EventHandler.on({
   action: 'click',
   attr: 'data-login'
-}, sendLoginData);
+}, Account.login());
 
 EventHandler.on({
   action: 'click',
   attr: 'data-registration'
-}, sendRegistrationData);
-
-EventHandler.on({
-  action: 'click',
-  attr: 'data-delete-friend'
-}, sendDeleteFriendRequest);
-
-EventHandler.on({
-  action: 'click',
-  attr: 'data-drow-route-to-user'
-}, getUserLocation);
-
-EventHandler.on({
-  action: 'click',
-  attr: 'data-get-position'
-}, getUserPosition);
+}, Account.registration());
