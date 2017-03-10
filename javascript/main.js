@@ -1,8 +1,18 @@
 var globalMenuIsActive = false;
 var CURRENT_USER_ID = 1;
 
-window.addEventListener('load', function(){
-  loadLoginPage();
+window.addEventListener('load', function(e){
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      Ajax.page('profile', function(){
+        globalWrapper.innerHTML = this;
+      });
+    } else {
+      Ajax.page('login', function(){
+        globalWrapper.innerHTML = this;
+      });
+    }
+  });
 }, false);
 
 document.addEventListener('click', function(event){

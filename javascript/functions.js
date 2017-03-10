@@ -5,14 +5,22 @@ function sendLoginData(){
   };
 
   if(fields.email != '' && fields.password != ''){
-    Ajax.post('/api/v1.0/login', fields, function(){
-      var data = JSON.parse(this);
+    firebase.auth().signInWithEmailAndPassword(fields.email, fields.password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
 
-      if(data.success){
-        goToHomePage();
-      } else {
-        alert(data.message);
+      switch(errorCode){
+        case 'auth/user-not-found':
+          alert('This user is not registered!');
+          break;
+        case 'auth/wrong-password':
+          alert('Invalid password!');
+          break;
       }
+
+      console.log(firebase.auth().currentUser);
+
+      console.log(errorCode + ' :: ' + errorMessage);
     });
   } else {
     alert('Please, fill all fields.');
