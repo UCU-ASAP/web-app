@@ -235,6 +235,14 @@ input:focus{
   margin: auto;
 }
 
+.registration-set-profile-image--container svg{
+  fill: #fff;
+  width: 70px;
+  height: 70px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
 .registration-set-profile-image--title{
   position: absolute;
   bottom: 20px;
@@ -278,13 +286,14 @@ input:focus{
   margin: 0;
 }
 
-.registration-field-box img{
+.registration-field-box svg{
   position: absolute;
   z-index: 2;
   width: 22px;
   height: 22px;
   top: 10px;
   left: 20px;
+  fill: #ccc;
 }
 
 .registration-field-box input{
