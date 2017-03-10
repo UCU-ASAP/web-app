@@ -55,4 +55,4 @@ gulp.task('svg', () =>
 
 gulp.task( 'default', ['connect', 'css', 'js', 'svg'] );
 
-gulp.watch( ['javascript/**/*.js', 'stylus/**/*.styl', 'svg/**/*.*'], ['css', 'js', 'svg'] );
+gulp.watch( ['javascript/**/*.js', 'css/**/*.css', 'svg/**/*.*'], ['css', 'js', 'svg'] );
