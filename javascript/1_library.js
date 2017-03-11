@@ -4,7 +4,7 @@ var EventHandler = {
 			var target = event.target;
 			while(target != document){
 				if(target.getAttribute(options.attr)){
-					success(event, target, options.attr);
+					success.call(this, event, target, options.attr);
 					return;
 				}
 				target = target.parentNode;

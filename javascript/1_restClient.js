@@ -11,7 +11,7 @@ var Rest = {
   authenticate: function(fields){
     firebase.auth()
       .signInWithEmailAndPassword(fields.email, fields.password)
-      .catch(Rest.authenticationErrorHandler());
+      .catch(Rest.authenticationErrorHandler);
   },
   authenticationErrorHandler: function(error){
     switch(error.code){
@@ -48,5 +48,16 @@ var Rest = {
       }).catch(function(error) {
         console.log(error);
     });
+  },
+  createNewUser: function(obj, callback){
+    firebase.auth()
+      .createUserWithEmailAndPassword(obj.email, obj.password)
+      .catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        console.log(errorCode + ' :: ' + errorMessage);
+        callback.call();
+      });
   }
 };
