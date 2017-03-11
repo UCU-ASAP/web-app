@@ -33,3 +33,8 @@ EventHandler.on({
   action: 'click',
   attr: 'data-logout'
 }, Account.signOut);
+
+EventHandler.on({
+  action: 'click',
+  attr: 'data-get-position'
+}, getUserPosition);

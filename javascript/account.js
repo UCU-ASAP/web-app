@@ -10,18 +10,19 @@ var Account = {
   },
   registration: function(){
     var fields = Account.getRegistrationValues(),
-        fieldNames = ['firstName', 'lastName', 'email', 'password', 'repeatPassword'],
-        fieldsValidation = Account.validateTextFields({
-          fields: fields,
-          fieldNames: fieldNames
-        });
+        fieldsValidation = Account.validateTextFields(fields);
 
     if(fieldsValidation){
       if(Account.emailValidation(fields.email)){
-        if(Account.passwordValidation(fields.password)){
-          alert('OK');
+        if(Account.passwordValidation(fields.password) && Account.passwordsEquals(fields)){
+          Rest.createNewUser(fields, function(){
+            Ajax.page('login', function(){
+              globalWrapper.innerHTML = this;
+            });
+          });
         } else {
-          alert('Incorrect password. \n Assert a string has at least one number\nAssert a string has at least one special character\n Length: 8-30');
+          alert('Incorrect password. \n Assert a string has at least one number\n' +
+          'Assert a string has at least one special character\n Length: 8-30');
         }
       } else {
         alert('Enter correct email!');
@@ -43,9 +44,9 @@ var Account = {
       password: document.getElementById('LOGIN_password').value
     };
   },
-  validateTextFields: function(params){
-    for(var field in params.fieldNames){
-      if(params[field].trim() === ''){
+  validateTextFields: function(fields){
+    for(var field in fields){
+      if(fields[field].replace(/\s/g, '') == ''){
         alert('Please, fill all fields.');
         return false;
       }
@@ -60,6 +61,9 @@ var Account = {
     var passwordPattern = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,30}$/;
     return passwordPattern.test(password);
   },
+  passwordsEquals: function(obj){
+    return obj.password.trim() === obj.repeatPassword.trim();
+  },
   signOut: function(){
     Rest.signOut(function(){
       Ajax.page('login', function(){
@@ -69,7 +73,7 @@ var Account = {
         addClass(menu, 'hide');
         menu.style.left = '-81vw';
         globalMenuIsActive = false;
-        
+
         globalWrapper.innerHTML = this;
       });
     });

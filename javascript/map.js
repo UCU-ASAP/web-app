@@ -2,10 +2,14 @@ var map, bounds, routePoints = {}, markerCoordinates = {};
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8,
+    center: {lat: 49.840197, lng: 24.028370},
+    zoom: 12,
     gestureHandling: 'cooperative',
-    draggable: true
+    draggable: true,
+    mapTypeControlOptions: {
+      mapTypeIds: []
+    },
+    streetViewControl: false
   });
   bounds = new google.maps.LatLngBounds();
 }
@@ -16,10 +20,10 @@ function getCoordinates(callback){
     location.getCurrentPosition(function(position){
       callback.call(position);
     }, function(){
-      console.log('Error: The Geolocation service failed.');
+      alert('Error: The Geolocation service failed.');
     });
   } else {
-    console.log('Error: Your browser doesn\'t support geolocation.');
+    alert('Error: Your browser doesn\'t support geolocation.');
   }
 }
 
@@ -33,9 +37,9 @@ function getUserPosition(){
     var coordinates = setMarkerOnMap(pos, 'Your location', 'origin'),
         posCoordinates= new google.maps.LatLng(coordinates.lat, coordinates.lng);
 
-    sendUserPosition(coordinates);
     bounds.extend(posCoordinates);
     map.fitBounds(bounds);
+    map.setZoom(17);
   });
 }
 
