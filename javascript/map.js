@@ -20,10 +20,10 @@ function getCoordinates(callback){
     location.getCurrentPosition(function(position){
       callback.call(position);
     }, function(){
-      console.log('Error: The Geolocation service failed.');
+      alert('Error: The Geolocation service failed.');
     });
   } else {
-    console.log('Error: Your browser doesn\'t support geolocation.');
+    alert('Error: Your browser doesn\'t support geolocation.');
   }
 }
 
