@@ -52,4 +52,5 @@ EventHandler.on({
   attr: 'data-friends'
 }, function(){
   Friends.toggle();
+  dataChannel.send("Hello World!");
 });
