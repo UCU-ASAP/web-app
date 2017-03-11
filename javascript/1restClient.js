@@ -40,13 +40,11 @@ var Rest = {
   getUser: function(){
     return firebase.auth().currentUser;
   },
-  signOut: function(){
+  signOut: function(callback){
     firebase.auth()
       .signOut()
       .then(function() {
-        Ajax.page('login', function(){
-          globalWrapper.innerHTML = this;
-        });
+        callback.call();
       }).catch(function(error) {
         console.log(error);
     });

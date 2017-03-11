@@ -28,3 +28,8 @@ EventHandler.on({
   action: 'click',
   attr: 'data-registration'
 }, Account.registration);
+
+EventHandler.on({
+  action: 'click',
+  attr: 'data-logout'
+}, Account.signOut);

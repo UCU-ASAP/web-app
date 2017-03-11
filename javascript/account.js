@@ -59,5 +59,19 @@ var Account = {
   passwordValidation: function(password){
     var passwordPattern = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,30}$/;
     return passwordPattern.test(password);
+  },
+  signOut: function(){
+    Rest.signOut(function(){
+      Ajax.page('login', function(){
+        var menu = document.getElementById('menu');
+
+        removeClass(menu, 'show');
+        addClass(menu, 'hide');
+        menu.style.left = '-81vw';
+        globalMenuIsActive = false;
+        
+        globalWrapper.innerHTML = this;
+      });
+    });
   }
 };
