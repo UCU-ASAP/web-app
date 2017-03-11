@@ -38,3 +38,18 @@ EventHandler.on({
   action: 'click',
   attr: 'data-get-position'
 }, getUserPosition);
+
+EventHandler.on({
+  action: 'click',
+  attr: 'data-route'
+}, function(event, target, attr){
+  setRoute(event, target, attr);
+  Friends.toggle();
+});
+
+EventHandler.on({
+  action: 'click',
+  attr: 'data-friends'
+}, function(){
+  Friends.toggle();
+});

@@ -29,3 +29,18 @@ document.addEventListener('click', function(event){
     globalMenuIsActive = false;
   }
 }, false);
+
+var Friends = {
+  active: false,
+  toggle: function(){
+    var friendsWrapper = document.getElementById('friends');
+
+    if(Friends.active){
+      friends.style.display = 'none';
+      Friends.active = false;
+    } else {
+      friends.style.display = 'block';
+      Friends.active = true;
+    }
+  }
+}
